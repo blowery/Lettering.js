@@ -1,6 +1,6 @@
 # Lettering.js, a Dojo plugin for radical Web Typography
 ## Note
-This is a port of the jQuery Lettering.js plugin to Dojo. You can find the original site here: http://daverupert.com/2010/09/lettering-js/
+This is a port of the jQuery Lettering.js plugin to Dojo. You can find the original site here: [http://daverupert.com/2010/09/lettering-js/](http://daverupert.com/2010/09/lettering-js/)
 
 We developed a lightweight, easy to use Javascript `span` injector for radical Web Typography, we're calling it "Lettering Dot JS", and we're releasing it today for free over on Github. Let me demo it for you: `</stevejobs>`
 
