@@ -14,8 +14,7 @@ dojo.provide("lettering");
 dojo.require("dojo.NodeList-manipulate");
 dojo.require("dojo.NodeList-traverse");
 
-dojo.ready(function(){
-	var d = dojo, $ = d.query;
+(function(d, $){
 	var methods = {
 		init : function() {
 
@@ -71,4 +70,4 @@ dojo.ready(function(){
 		}
 	};
 
-});
+})(dojo, dojo.query);
