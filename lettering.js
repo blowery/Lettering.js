@@ -9,28 +9,34 @@
 *
 * Date: Mon Sep 13 11:54:00 2010 -0600
 */
-(function($){
+
+dojo.provide("lettering");
+dojo.require("dojo.NodeList-manipulate");
+dojo.require("dojo.NodeList-traverse");
+
+dojo.ready(function(){
+	var d = dojo, $ = d.query;
 	var methods = {
 		init : function() {
 
-			return this.each(function() {
-				return injector($(this), '', 'char', '');
+			return this.forEach(function(n) {
+				return injector($(n), '', 'char', '');
 			});
 
 		},
 
 		words : function() {
 
-			return this.each(function() {
-				return injector($(this), ' ', 'word', ' ');
+			return this.forEach(function(n) {
+				return injector($(n), ' ', 'word', ' ');
 			});
 
 		},
 		
 		lines : function() {
 
-			return this.each(function() {
-				var t = $(this), r = "eefec303079ad17405c889e092e105b0";
+			return this.forEach(function(n) {
+				var t = $(n), r = "eefec303079ad17405c889e092e105b0";
 				// Because it's hard to split a <br/> tag consistently across browsers,
 				// (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash 
 				// (of the word "split").  If you're trying to use this plugin on that 
@@ -45,7 +51,7 @@
 	function injector(t, splitter, klass, after) {
 		var a = t.text().split(splitter), inject = '';
 		if(a.length > 0) {
-			$(a).each(function(i, item) {
+			d.forEach(a, function(item, i) {
 				inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
 			});	
 			t.empty();
@@ -53,15 +59,16 @@
 		}
 	}
 
-	$.fn.lettering = function( method ) {
+
+  d.NodeList.prototype.lettering = function(method) {
 		// Method calling logic
 		if ( methods[method] ) {
 			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
 		} else if ( method == 'letters' || ! method ) {
 			return methods.init.apply( this, arguments );
 		} else {
-			$.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
+			throw new Error( 'Method ' +  method + ' does not exist on lettering' );
 		}
 	};
 
-})(jQuery);
+});

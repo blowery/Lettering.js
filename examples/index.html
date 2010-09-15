@@ -14,7 +14,7 @@
   <meta name="author" content="Dave Rupert">
 
   <meta name="viewport" content="width=device-width; initial-scale=1.0">
-	<link rel="stylesheet" href="style.css" type="text/css" media="screen"></link>
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen">
 	
 	<style type="text/css" media="screen">
 		.demo {
@@ -41,15 +41,16 @@
 		.char6 { color: indigo; }
 		.char7 { color: violet; }
 	</style>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  <script src="../jquery.lettering-0.6.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js" type="text/javascript"></script>
+  <script src="../lettering.js"></script>
   <script>
-  	$(document).ready(function() {
+	  dojo.ready(function() {
+	    var $ = dojo.query;
 			$("#demo1 h1").lettering();
 			$("#demo2 h1").lettering('words');
 			$("#demo3 p").lettering('lines');
 			$("#demo4 h1").lettering('words').children("span").lettering();
-			$("#demo5 h1").lettering().children("span").css({'display':'inline-block', '-webkit-transform':'rotate(-25deg)'});
+			$("#demo5 h1").lettering().children("span").style({'display':'inline-block', '-webkit-transform':'rotate(-25deg)'});
 		});
   </script>
 
