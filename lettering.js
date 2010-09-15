@@ -17,6 +17,8 @@ dojo.require("dojo.NodeList-manipulate");
 dojo.require("dojo.NodeList-traverse");
 
 (function(d, $){
+
+	var r = "eefec303079ad17405c889e092e105b0";
 	var methods = {
 		init : function() {
 
@@ -37,7 +39,7 @@ dojo.require("dojo.NodeList-traverse");
 		lines : function() {
 
 			return this.forEach(function(n) {
-				var t = $(n), r = "eefec303079ad17405c889e092e105b0";
+				var t = $(n);
 				// Because it's hard to split a <br/> tag consistently across browsers,
 				// (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash 
 				// (of the word "split").  If you're trying to use this plugin on that 
@@ -52,9 +54,9 @@ dojo.require("dojo.NodeList-traverse");
 	function injector(t, splitter, klass, after) {
 		var a = t.text().split(splitter), inject = '';
 		if(a.length > 0) {
-			d.forEach(a, function(item, i) {
-				inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
-			});	
+			inject = d.map(a, function(item, i) {
+				return'<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
+			}).join("");
 			t.empty();
 			t.append(inject);
 		}
