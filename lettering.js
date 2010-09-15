@@ -4,6 +4,8 @@
 * Copyright 2010, Dave Rupert http://daverupert.com
 * Released under the WTFPL license 
 * http://sam.zoy.org/wtfpl/
+* 
+* Ported to Dojo - Ben Lowery - http://blowery.org
 *
 * Thanks to Paul Irish - http://paulirish.com - for the feedback.
 *
@@ -59,15 +61,17 @@ dojo.require("dojo.NodeList-traverse");
 	}
 
 
-  d.NodeList.prototype.lettering = function(method) {
-		// Method calling logic
-		if ( methods[method] ) {
-			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-		} else if ( method == 'letters' || ! method ) {
-			return methods.init.apply( this, arguments );
-		} else {
-			throw new Error( 'Method ' +  method + ' does not exist on lettering' );
+	d.extend(d.NodeList, { 
+		lettering: function(method) {
+			// Method calling logic
+			if ( methods[method] ) {
+				return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+			} else if ( method == 'letters' || ! method ) {
+				return methods.init.apply( this, arguments );
+			} else {
+				throw new Error( 'Method ' +  method + ' does not exist on lettering' );
+			}
 		}
-	};
+	});
 
 })(dojo, dojo.query);
