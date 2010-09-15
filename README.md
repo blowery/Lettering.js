@@ -1,4 +1,7 @@
-# Lettering.js, a jQuery plugin for radical Web Typography
+# Lettering.js, a Dojo plugin for radical Web Typography
+## Note
+This is a port of the jQuery Lettering.js plugin to Dojo. You can find the original site here: http://daverupert.com/2010/09/lettering-js/
+
 We developed a lightweight, easy to use Javascript `span` injector for radical Web Typography, we're calling it "Lettering Dot JS", and we're releasing it today for free over on Github. Let me demo it for you: `</stevejobs>`
 
 ## Individual Letter Control with Lettering.js
@@ -6,13 +9,13 @@ We'll start with some really basic markup:
 
 	<h1 class="fancy_title">Some Title</h1>
 
-After including jQuery, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
+After including Dojo, then a script block with the magical `.lettering()` method:
 	
-	<script src="path/to/jquery-1.4.2.min.js"></script>
-	<script src="path/to/jquery.lettering.min.js"></script>
+	<script src="path/to/dojo.js"></script>
+	<script src="path/to/lettering.js"></script>
 	<script>
-	$(document).ready(function() {
-	  $(".fancy_title").lettering();
+	dojo.ready(function() {
+    dojo.query(".fancy_title").lettering();
 	});
 	</script>
 	
@@ -47,8 +50,8 @@ Here's an example of the `.lettering('words')` method:
 	<p class="word_split">Don't break my heart.</p>
 
 	<script>
-	$(document).ready(function() {
-	  $(".word_split").lettering('words');
+	dojo.ready(function() {
+	  dojo.query(".word_split").lettering('words');
 	});
 	</script>
 
@@ -69,8 +72,8 @@ Once word wrapping was complete, we noticed the need for yet another method, one
 	<p class="line_split">Are you<br/> ready to<br/> RUMmMmMMBBLE!</p>
 
 	<script>
-	$(document).ready(function() {
-	  $(".line_split").lettering('lines');
+	dojo.ready(function() {
+	  dojo.query(".line_split").lettering('lines');
 	});
 	</script>
 
@@ -91,13 +94,13 @@ We've found this to be a pretty quick and elegant solution to create typographic
 Be smart and use sparingly. You'll probably break your browser if you try to tried to do wrap every letter on your page in a `span` tag, so don't do that.  Look to use this in your Headings, Blockquotes, Asides, etc.
 
 ### Kern Well
-If you're going through the trouble to load a fancy font and that word or phrase is the largest on the site, then it's important for it to be kerned well.  With Lettering.js, kerning is a breeze. You can simply use `$("#id-of-what-i-want-to-kern").lettering();` and then on each `.char#`, you can set relative position or left/right margin. Works like a charm.
+If you're going through the trouble to load a fancy font and that word or phrase is the largest on the site, then it's important for it to be kerned well.  With Lettering.js, kerning is a breeze. You can simply use `dojo.query("#id-of-what-i-want-to-kern").lettering();` and then on each `.char#`, you can set relative position or left/right margin. Works like a charm.
 
 ### Non-Javascript Fallback
-As with any kind of Javascript, have a fall back plan in case the user doesn't have javascript enabled.  The bottom line is up to you, my bottom line would be "legible and on the screen". Also, use `lettering.min.js` [Download the Minified Version of Lettering.js here](http://github.com/davatron5000/Lettering.js/downloads)
+As with any kind of Javascript, have a fall back plan in case the user doesn't have javascript enabled.  The bottom line is up to you, my bottom line would be "legible and on the screen".
 
 ### Performance Anti-Pattern
-Web performance patterns advise that you put Javascripts at the bottom of your page before your `</body>` tag.  There is an unfortunate side effect where you may experiences a [FOUT (Flash of Unstyled Text)](http://paulirish.com/2009/fighting-the-font-face-fout/) when you're manipulating your text after the DOM has loaded.  Unfortunately, we found the best solution to avoid/minimize the FOUT caused by this plugin is to put your scripts (jQuery, Lettering.js) in the document `<head>`. On the one hand, your page will load slower. On the other hand, a flash/restyling makes your site feel slow. Users might ultimately feel the site is faster if they don't see the FOUT.
+Web performance patterns advise that you put Javascripts at the bottom of your page before your `</body>` tag.  There is an unfortunate side effect where you may experiences a [FOUT (Flash of Unstyled Text)](http://paulirish.com/2009/fighting-the-font-face-fout/) when you're manipulating your text after the DOM has loaded.  Unfortunately, we found the best solution to avoid/minimize the FOUT caused by this plugin is to put your scripts (Dojo, Lettering.js) in the document `<head>`. On the one hand, your page will load slower. On the other hand, a flash/restyling makes your site feel slow. Users might ultimately feel the site is faster if they don't see the FOUT.
 
 ## Download, Fork, Commit, Please.
 We really want Lettering.js to be a quality helper for web typography.  If you have any feedback or suggestions, please leave those over on the Github.  We're excited about typography on the web and want to help make it print quality.
